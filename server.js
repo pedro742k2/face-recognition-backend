@@ -11,6 +11,7 @@ const image = require("./Controllers/Image");
 /* Optional Controller: */
 const getUsers = require("./Controllers/GetUsers");
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 const db = knex({
   client: "pg",
   connection: {
