@@ -22,10 +22,24 @@ const db = knex({
 });
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
+
+app.get("/", (req, res) => {
+  res.json({
+    msg: "Hey, you're on the root",
+    availableOptions: [
+      "/get_users",
+      "/signin",
+      "/register",
+      "/profile/:id",
+      "/image",
+      "/image_url",
+    ],
+  });
+});
 
 app.get("/get_users", getUsers.handleGetUsers(db));
 
