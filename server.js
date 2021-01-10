@@ -22,7 +22,11 @@ const db = knex({
   },
 });
 
-console.log("db ->", db.select("*").from("users"));
+db.select("*")
+  .from("users")
+  .then((data) => {
+    console.log("db ->", data);
+  });
 
 const app = express();
 const port = process.env.PORT || 3000;
