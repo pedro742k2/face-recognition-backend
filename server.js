@@ -14,7 +14,7 @@ const getUsers = require("./Controllers/GetUsers");
 const db = knex({
   client: "pg",
   connection: {
-    connectString: /*process.env.DATABASE_URL || */ "postgresql-convex-46460",
+    connectString: process.env.DATABASE_URL,
     ssl: {
       rejectUnauthorized: false,
     },
@@ -37,6 +37,7 @@ app.get("/", (req, res) => {
       "/profile/:id",
       "/image",
       "/image_url",
+      `process.env.DATABASE_URL: ${process.env.DATABASE_URL}`,
     ],
   });
 });
