@@ -14,20 +14,20 @@ const getUsers = require("./Controllers/GetUsers");
 const db = knex({
   client: "pg",
   connection: {
-    connectString: process.env.DATABASE_URL,
-    user: "tbmmqooyqritxc",
-    password:
-      "ff7fc328b4ead0e3598aed8480bf95abb130112e16ac419bd4e1e211cdaee187",
+    connectionString: process.env.DATABASE_URL,
     ssl: {
       rejectUnauthorized: false,
     },
   },
 });
 
+let error;
+
 db.select("*")
   .from("users")
   .then((data) => {
     console.log("db ->", data);
+    error = data;
   })
   .catch(console.log);
 
@@ -47,6 +47,7 @@ app.get("/", (req, res) => {
       "/profile/:id",
       "/image",
       "/image_url",
+      `error: ${error}`,
       `process.env.DATABASE_URL: ${process.env.DATABASE_URL}`,
     ],
   });
