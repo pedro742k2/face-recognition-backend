@@ -26,7 +26,8 @@ db.select("*")
   .from("users")
   .then((data) => {
     console.log("db ->", data);
-  });
+  })
+  .catch(console.log);
 
 const app = express();
 const port = process.env.PORT || 3000;
