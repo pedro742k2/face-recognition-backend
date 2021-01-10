@@ -14,9 +14,9 @@ const handleGetUsers = (db) => (req, res) => {
         console.log("No users found");
       }
     })
-    .catch(() => {
+    .catch((error) => {
       res.status(500).json("Unable to get users");
-      console.log("Unable to get users");
+      console.log("Unable to get users", error);
     });
 };
 
