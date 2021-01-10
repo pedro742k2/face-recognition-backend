@@ -11,11 +11,13 @@ const image = require("./Controllers/Image");
 /* Optional Controller: */
 const getUsers = require("./Controllers/GetUsers");
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 const db = knex({
   client: "pg",
   connection: {
     connectString: process.env.DATABASE_URL,
+    user: "tbmmqooyqritxc",
+    password:
+      "ff7fc328b4ead0e3598aed8480bf95abb130112e16ac419bd4e1e211cdaee187",
     ssl: {
       rejectUnauthorized: false,
     },
