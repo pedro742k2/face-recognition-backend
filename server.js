@@ -14,10 +14,8 @@ const getUsers = require("./Controllers/GetUsers");
 const db = knex({
   client: "pg",
   connection: {
-    host: "postgresql-convex-46460",
-    user: "postgres",
-    password: "07042002aP",
-    database: "intel-smart-face",
+    host: process.env.DATABASE_URL,
+    ssl: true,
     // database: "smart-face-app",
   },
 });
