@@ -16,9 +16,13 @@ const db = knex({
   client: "pg",
   connection: {
     connectString: process.env.DATABASE_URL,
-    ssl: true,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   },
 });
+
+console.log("db ->", db.select("*").from("users"));
 
 const app = express();
 const port = process.env.PORT || 3000;
