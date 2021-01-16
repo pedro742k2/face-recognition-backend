@@ -13,6 +13,7 @@ const handleLogin = (db, bcrypt) => (req, res) => {
               .select("*")
               .from("users")
               .where("email", givenUser)
+              .orWhere("user_name", givenUser)
               .then((user) => {
                 res.json({
                   isSuccessful: true,
