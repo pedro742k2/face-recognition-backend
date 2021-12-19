@@ -5,7 +5,7 @@ const router = require("./routes");
 
 // Get .env constants
 require("dotenv").config();
-const serverPort = Number(process.env.SERVER_PORT);
+const serverPort = Number(process.env.PORT);
 
 const app = express();
 
