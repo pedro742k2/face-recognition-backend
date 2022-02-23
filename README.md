@@ -56,13 +56,13 @@ The Face Detection App also has a pretty simple login/register system with profi
 
 ## 💻 Technologies
 
-### Frontend ([Repository](https://github.com/pedro742k2/face-recognition-frontend))
+### Front end ([Repository](https://github.com/pedro742k2/face-recognition-frontend))
   - React
   - CSS
   - Tachyons
   - Animate.css
 
-### Backend
+### Back end
   - Node.js
   - Express
   - Bcrypt
