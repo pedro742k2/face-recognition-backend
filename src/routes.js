@@ -14,14 +14,26 @@ require("dotenv").config();
 // Router
 const router = express.Router();
 
-const db = knex({
+/**
+ *  WWW DB connection
+ */
+/* const db = knex({
   client: "pg",
   connection: {
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
   },
+}); */
+
+/**
+ * Local DB connection
+ */
+const db = knex({
+  client: "pg",
+  connection: process.env.POSTGRES_URI,
 });
 
+router.get("/", (req, res) => res.send("Face Recognition API"));
 router.post("/signin", login.handleLogin(db, bcrypt));
 router.post("/register", register.handleRegister(db, bcrypt));
 router.get("/profile/:id", profile.handleProfile(db));

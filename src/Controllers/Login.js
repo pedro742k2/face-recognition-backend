@@ -33,11 +33,6 @@ const handleLogin = (db, bcrypt) => (req, res) => {
             });
           }
         });
-      } else {
-        res.status(400).json({
-          isSuccessful: false,
-          msg: "Wrong credentials",
-        });
       }
     })
     .catch((error) => {

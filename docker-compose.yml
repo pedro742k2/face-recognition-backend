@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  # Backend API
+  face-recg-api:
+    container_name: backend
+    build: ./
+    command: npm run dev
+    working_dir: /app
+    ports:
+      - "8080:8080"
+    environment:
+      POSTGRES_URI: "postgres://postgres:9103@postgres:5432/FACE-RECG-DB"
+      PORT: 8080
+    volumes:
+      - ./:/app
+
+  # Postgres
+  postgres:
+    build: ./database
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 9103
+      POSTGRES_DB: FACE-RECG-DB
+      POSTGRES_HOST: postgres
