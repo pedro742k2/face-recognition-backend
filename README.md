@@ -1,8 +1,12 @@
 # 🧐 Face Recognition App
 
 ### Note:
+<<<<<<< HEAD
 
 - This is the Backend repository of the Face Recognition App, to access the Frotnend code [click here](https://github.com/pedro742k2/face-recognition-frontend)
+=======
+- This is the back-end repository of the Face Recognition App, to access the front-end code [click here](https://github.com/pedro742k2/face-recognition-frontend)
+>>>>>>> 1934e251d8077a82618a0ab6b245996160d2db7d
 
 ## ⚠️ Warning
 
@@ -58,6 +62,7 @@ The Face Detection App also has a pretty simple login/register system with profi
 
 ## 💻 Technologies
 
+<<<<<<< HEAD
 ### Frontend ([Repository](https://github.com/pedro742k2/face-recognition-frontend))
 
 - React
@@ -72,6 +77,20 @@ The Face Detection App also has a pretty simple login/register system with profi
 - Bcrypt
 - **Knex** and **PG** for the database connection
 - Database: **PostgreSQL**
+=======
+### Front end ([Repository](https://github.com/pedro742k2/face-recognition-frontend))
+  - React
+  - CSS
+  - Tachyons
+  - Animate.css
+
+### Back end
+  - Node.js
+  - Express
+  - Bcrypt
+  - **Knex** and **PG** for the database connection
+  - Database: **PostgreSQL**
+>>>>>>> 1934e251d8077a82618a0ab6b245996160d2db7d
 
 ### Services
 
