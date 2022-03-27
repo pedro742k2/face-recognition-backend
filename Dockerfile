@@ -8,8 +8,4 @@ COPY . .
 # Install all the dependencies
 RUN npm install
 
-ENV PORT=4000
-
-EXPOSE 8080
-
 CMD ["npm", "run", "dev"]

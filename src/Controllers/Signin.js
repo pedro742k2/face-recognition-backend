@@ -13,7 +13,6 @@ const handleSignin = (db, bcrypt, req) => {
     .where("user_name", givenUser.toLocaleLowerCase())
     .orWhere("email", givenUser.toLocaleLowerCase())
     .then((data) => {
-      console.log(data);
       if (data.length) {
         return (
           bcrypt

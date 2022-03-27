@@ -25,9 +25,9 @@ redisClient.connect();
 redisClient.set("key", "value");
 
 /**
- * DB connection
+ * DB online connection
  */
-const db = knex({
+/* const db = knex({
   client: "pg",
   connection: {
     connectionString: process.env.DATABASE_URL,
@@ -35,6 +35,14 @@ const db = knex({
       rejectUnauthorized: false,
     },
   },
+}); */
+
+/**
+ * DB local connection
+ */
+const db = knex({
+  client: "pg",
+  connection: process.env.DATABASE_URL,
 });
 
 router.get("/", (req, res) => res.send("Face Recognition API"));
