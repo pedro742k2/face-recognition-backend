@@ -32,7 +32,7 @@ const db = knex({
   connection: {
     connectionString: process.env.DATABASE_URL,
 
-    // Comment the ssl object bellow when testing locally
+    // Comment the ssl object below when testing locally
     /* ssl: {
       rejectUnauthorized: false,
     }, */
