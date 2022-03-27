@@ -18,7 +18,7 @@ const router = express.Router();
  * Redis connection
  */
 const redisClient = redis.createClient({
-  url: process.env.REDISTOGO_URL,
+  url: process.env.REDIS_URL,
 });
 redisClient.on("error", console.error);
 redisClient.connect();

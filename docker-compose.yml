@@ -11,7 +11,7 @@ services:
       - "4000:4000"
     environment:
       DATABASE_URL: "postgres://postgres:${POSTGRES_PASSWORD}@postgres:5432/FACE-RECG-DB"
-      REDISTOGO_URL: "redis://redis:6379"
+      REDIS_URL: "redis://redis:6379"
       PORT: 4000
       JWT_SECRET: "${JWT_SECRET}"
       CLARIFAI_API_KEY: "${CLARIFAI_API_KEY}"
