@@ -4,29 +4,22 @@
 
 - This is the Backend repository of the Face Recognition App, to access the Frotnend code [click here](https://github.com/pedro742k2/face-recognition-frontend)
 
-## ⚠️ Warning
-
-Although the password you introduce when registering is fully secured with a hash and a salt, this app isn't meant to be focused on login safety.
-Face Recognition App user login data will only be stored to simulate an authentication for the next time you open the Web App and store your profile credits, but anyone can increment them (the credits) with your login ID and an API platform like "Insomnia" or "Postman".
-
-Nothing of these puts the data you introduce in danger, nor your personal info, but keep in mind that, if you analyze the front(back)end code, you'll likely see that anyone can increment credits on your account, which obviously, isn't a bad thing at all right? 😁 Remember, this is just a demo app to analyze the number of faces on a photo and mark them inside boxes.
-
 ## Screenshots
 
-- Login
-  <img width="1080" alt="login" src="https://user-images.githubusercontent.com/54741310/141699215-897649d2-a8a5-4a05-b340-4c2d8f42274b.png">
+  - Signin
+<img width="1080" alt="signin" src="https://user-images.githubusercontent.com/54741310/160286963-cf8327ee-13e2-4f50-9985-4c6155c1c222.png">
 
-- Register
-  <img width="1079" alt="register" src="https://user-images.githubusercontent.com/54741310/141699221-f9e82592-0797-4fb5-9f56-79c10bd10510.png">
+  - Register
+<img width="1080" alt="register" src="https://user-images.githubusercontent.com/54741310/160287019-9254628f-5a10-4896-9400-135f0edbd436.png">
 
-- Home
-  <img width="1080" alt="main" src="https://user-images.githubusercontent.com/54741310/141699233-6cc9eb74-eb30-4472-b914-cfae164e163e.png">
+  - Home
+<img width="1080" alt="home" src="https://user-images.githubusercontent.com/54741310/160287031-ef1f39f6-ff53-4b70-bcb3-6b663de8cc7c.png">
 
-- Face Detection (Example 1)
-  <img width="1080" alt="face_detection" src="https://user-images.githubusercontent.com/54741310/141699255-cf848a01-7a79-4af8-80b4-41f760e335ff.png">
+  - Face Recognition
+<img width="1080" alt="face_detection" src="https://user-images.githubusercontent.com/54741310/160287062-7faa4727-b49c-4d5d-b3a7-7b6d687fd9aa.png">
 
-- Face Detection (Example 2)
-  <img width="1067" alt="face_detection_2" src="https://user-images.githubusercontent.com/54741310/141699257-c47cf5a8-9987-433f-bea2-0ea40cba0583.png">
+  - Profile Modal (Edit user info)
+<img width="1080" alt="profile-modal" src="https://user-images.githubusercontent.com/54741310/160287083-006a0038-a689-446a-bb67-99b160951de7.png">
 
 ## 🤖 What is the Face Detection App meaning?
 
@@ -36,56 +29,45 @@ The Face Detection App also has a pretty simple login/register system with profi
 
 ## How to visit the project
 
-### 🌎 Face Recognition App is available online as a demo
+### 🌎 Face Recognition API is available online as a demo
 
-- 📡 Live web app: https://pedro742k2.github.io/face-recognition-frontend/
+- 📡 Live web app: https://pedro742k2.github.io/face-recognition-frontend
+- 📡 Live API server: https://face-recognition-server-pedro.herokuapp.com/api
 
-### 🏠 But if you want to test it locally and make changes to the code
+### 🏠 But if you want to test it locally and make changes to the code (with **Docker**)
 
 - Clone this repository to the desired directory
-- Inside the desired directory, run:
-  - `npm install` to install all the project dependencies
-  - `npm run local` to execute the development build on your local network
-- **Or**, to create a production build, run:
-  - `npm install`
-  - `npm run build` to create a production build
-  - `npm start` to serve the created build folder on your local network
+- Inside the project root directory:
+  - Create an *environment variables* file called `.env` and, inside of it, add `CLARIFAI_API_KEY` with your Clarifai API key, `JWT_SECRET` with something random that comes to your mind and `POSTGRES_PASSWORD` with the PostgreSQL database password that you desire. In the end, it should look like this:
+  - Folder and `.env` file structure:
+
+    <img width="125" alt="file  env folder" src="https://user-images.githubusercontent.com/54741310/160290632-84e2bef1-ca3f-4e10-81c0-6f69e902083f.png">
+  
+    ![file  env](https://user-images.githubusercontent.com/54741310/160290637-e06fa828-4716-4e51-b2b8-9104472ff5d9.png)
+    
+  - After setting up the environment, just run `docker-compose up --build` and the server + databases will be running automatically, with already two mock users created (`./database/mocks/seed.sql`).
+
 
 ### 🤝 Contributions and feedback
 
 - 🛠️ If you have any suggestions, want to report an issue or give general feedback, feel free to make a pull request or email me at pedro.manuel.peres.batista@gmail.com with the suggestion or detailed description of the problem 😀.
-- 🙌 I'll thank you for that!
 
 ## 💻 Technologies
 
 ### Frontend ([Repository](https://github.com/pedro742k2/face-recognition-frontend))
-
-- React
-- CSS
-- Tachyons
-- Animate.css
+  - React.js;
+  - Tachyons;
+  - Animate.css;
+  - Lottie web animations.
 
 ### Backend
-
-- Node.js
-- Express
-- Bcrypt
-- **Knex** and **PG** for the database connection
-- Database: **PostgreSQL**
-=======
-### Front end ([Repository](https://github.com/pedro742k2/face-recognition-frontend))
-  - React
-  - CSS
-  - Tachyons
-  - Animate.css
-
-### Back end
-  - Node.js
-  - Express
-  - Bcrypt
-  - **Knex** and **PG** for the database connection
-  - Database: **PostgreSQL**
+  - Node.js;
+  - Express;
+  - Bcrypt;
+  - Databases: **PostgreSQL**, **Redis**;
+  - **Knex** and **PG** for the database connection;
+  - Docker;
+  - JWT.
 
 ### Services
-
-- Clarifai face detection API
+  - Clarifai face detection API
