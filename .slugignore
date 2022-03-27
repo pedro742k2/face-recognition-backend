@@ -1,0 +1,9 @@
+database/
+node_modules/
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+.env
