@@ -24,8 +24,9 @@
 ## 🤖 What is the Face Detection App meaning?
 
 Face Detection App is meant to detect and quantify the number of people faces in a photo.
-Althought it's still in development, Face Detection App is here to expose my skills with API data manipulation and React, JS and CSS skills by outlining the image detected faces with a rectangle.
-The Face Detection App also has a pretty simple login/register system with profile credits, which are incremented in every successful API call.
+Althought it's still in development, Face Detection App is here to show off my skills with API data manipulation and React.js, JS and CSS skills by outlining the image detected faces inside boxes.
+
+The Face Detection App also has a login/register system with profile credits, which are incremented in every successful API call.
 
 ## How to visit the project
 
