@@ -3,7 +3,6 @@
 ### Note:
 
 - This is the Backend repository of the Face Recognition App, to access the Frotnend code [click here](https://github.com/pedro742k2/face-recognition-frontend)
-- This is the back-end repository of the Face Recognition App, to access the front-end code [click here](https://github.com/pedro742k2/face-recognition-frontend)
 
 ## ⚠️ Warning
 
