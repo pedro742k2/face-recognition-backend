@@ -23,6 +23,11 @@ services:
     build: ./database
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: FACE-RECG-DB
+      POSTGRES_HOST: postgres
 
   # Redis
   redis:
