@@ -28,8 +28,6 @@ Although it's still in development, the Face Detection App is here to show off m
 
 The Face Detection App also has a login/register system with profile credits, which are incremented in every successful API call.
 
-The Face Detection App also has a login/register system with profile credits, which are incremented in every successful API call.
-
 ## How to visit the project
 
 ### 🌎 Face Recognition API is available online as a demo
