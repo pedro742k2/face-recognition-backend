@@ -46,8 +46,11 @@ The Face Detection App also has a login/register system with profile credits, wh
   
     ![file  env](https://user-images.githubusercontent.com/54741310/160290637-e06fa828-4716-4e51-b2b8-9104472ff5d9.png)
     
-  - After setting up the environment, just run `docker-compose up --build` and the server + databases will be running automatically, with already two mock users created (`./database/mocks/seed.sql`).
+  - On the `routes.js` file (located at: `src/routes.js`) comment the ssl object as indicated (line `36`) to run the local psql database successfully. 
 
+    <img width="524" alt="psql" src="https://user-images.githubusercontent.com/54741310/160292702-bb59d459-b7df-4bb2-b10a-f3353eaa8767.png">
+    
+  - After setting up the environment, just run `docker-compose up --build` and the server + databases will be running automatically, with already two mock users created (`./database/mocks/seed.sql`).
 
 ### 🤝 Contributions and feedback
 
