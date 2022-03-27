@@ -8,10 +8,13 @@ services:
     command: npm run dev
     working_dir: /app
     ports:
-      - "8080:8080"
+      - "4000:4000"
     environment:
-      POSTGRES_URI: "postgres://postgres:9103@postgres:5432/FACE-RECG-DB"
-      PORT: 8080
+      DATABASE_URL: "postgres://postgres:${POSTGRES_PASSWORD}@postgres:5432/FACE-RECG-DB"
+      REDISTOGO_URL: "redis://redis:6379"
+      PORT: 4000
+      JWT_SECRET: "${JWT_SECRET}"
+      CLARIFAI_API_KEY: "${CLARIFAI_API_KEY}"
     volumes:
       - ./:/app
 
@@ -22,6 +25,12 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 9103
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
       POSTGRES_DB: FACE-RECG-DB
       POSTGRES_HOST: postgres
+
+  # Redis
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"

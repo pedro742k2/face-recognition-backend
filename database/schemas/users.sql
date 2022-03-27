@@ -6,6 +6,8 @@ CREATE TABLE users (
   user_name VARCHAR(255) UNIQUE NOT NULL,
   email TEXT UNIQUE NOT NULL,
   entries BIGINT DEFAULT 0,
+  birthday TIMESTAMP,
+  avatar_url TEXT,
   joined TIMESTAMP NOT NULL
 );
 

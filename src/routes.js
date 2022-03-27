@@ -1,45 +1,58 @@
+// Libraries
 const express = require("express");
 const bcrypt = require("bcrypt");
 const knex = require("knex");
-
+const redis = require("redis");
 // Controllers
 const register = require("./Controllers/Register");
-const login = require("./Controllers/Login");
+const signin = require("./Controllers/Signin");
 const profile = require("./Controllers/Profile");
 const image = require("./Controllers/Image");
-
-// Get .env constants
-require("dotenv").config();
+// Middlewares
+const auth = require("./Middlewares/Auth");
 
 // Router
 const router = express.Router();
 
 /**
- *  WWW DB connection
+ * Redis connection
  */
-/* const db = knex({
-  client: "pg",
-  connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false },
-  },
-}); */
+const redisClient = redis.createClient({
+  url: process.env.REDISTOGO_URL,
+});
+redisClient.on("error", console.error);
+redisClient.connect();
+redisClient.set("key", "value");
 
 /**
- * Local DB connection
+ * DB connection
  */
 const db = knex({
   client: "pg",
-  connection: process.env.POSTGRES_URI,
+  connection: process.env.DATABASE_URL,
 });
 
 router.get("/", (req, res) => res.send("Face Recognition API"));
-router.post("/signin", login.handleLogin(db, bcrypt));
-router.post("/register", register.handleRegister(db, bcrypt));
-router.get("/profile/:id", profile.handleProfile(db));
-router.put("/image", image.handleImage(db));
+router.post("/signin", signin.signinAuthentication(db, bcrypt, redisClient));
+router.post("/register", register.handleRegister(db, bcrypt, redisClient));
+// Get user profile
+router.get(
+  "/profile/:id",
+  auth.requireAuth(redisClient),
+  profile.handleProfile(db)
+);
+// Edit user profile
+router.post(
+  "/profile/:id",
+  auth.requireAuth(redisClient),
+  profile.handleProfileUpdate(db)
+);
+// Increment entries on image insertion
+router.put("/image", auth.requireAuth(redisClient), image.handleImage(db));
+// Clarifai API call to get the image faces
 router.post(
   "/image_url",
+  auth.requireAuth(redisClient),
   image.handleApiCall(db, process.env.CLARIFAI_API_KEY)
 );
 

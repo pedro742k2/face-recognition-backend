@@ -1,10 +1,17 @@
-const handleRegister = (db, bcrypt) => (req, res) => {
+const jwt = require("jsonwebtoken");
+
+const handleRegister = (db, bcrypt, redisClient) => (req, res) => {
   const { givenName, givenUser, givenEmail, givenPassword } = req.body;
 
-  if (!givenName || !givenUser || !givenEmail || !givenPassword) {
+  if (
+    !givenName?.trim() ||
+    !givenUser?.trim() ||
+    !givenEmail?.trim() ||
+    !givenPassword?.trim()
+  ) {
     return res
       .status(400)
-      .json({ isSuccessful: false, error: "Incorrect form submission" });
+      .json({ success: false, error: "Incorrect form submission" });
   }
 
   bcrypt.hash(givenPassword, 10, (error, hash) => {
@@ -26,18 +33,33 @@ const handleRegister = (db, bcrypt) => (req, res) => {
               email: loginEmail[0],
               joined: new Date(),
             })
-            .then((data) => {
-              if (data[0].id) {
-                res.json({
-                  isSuccessful: true,
-                  user: data,
-                });
-              } else {
-                res.status(400).json({
-                  isSuccessful: false,
-                  error: "Unable to return the user",
+            .then(async (data) => {
+              console.log(data);
+
+              const { id } = data[0];
+
+              if (id) {
+                // Generates JWT token
+                const token = jwt.sign(
+                  { userName: data[0].user_name },
+                  process.env.JWT_SECRET,
+                  { expiresIn: "2 days" }
+                );
+
+                // Store token on Redis
+                redisClient.set(token, id);
+
+                return res.json({
+                  success: true,
+                  userId: id,
+                  token,
                 });
               }
+
+              res.status(400).json({
+                success: false,
+                error: "Unable to return the user",
+              });
             });
         })
         .then(trx.commit)
@@ -45,7 +67,7 @@ const handleRegister = (db, bcrypt) => (req, res) => {
     }).catch((error) => {
       console.log(error);
       res.status(500).json({
-        isSuccessful: false,
+        success: false,
         error: "Unable to register: " + error,
       });
     });
