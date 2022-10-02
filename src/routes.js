@@ -22,7 +22,6 @@ const redisClient = redis.createClient({
 });
 redisClient.on("error", console.error);
 redisClient.connect();
-redisClient.set("key", "value");
 
 /**
  * DB connection
